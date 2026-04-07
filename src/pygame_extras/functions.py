@@ -17,7 +17,7 @@ def blit(
 ) -> pg.Rect:
     """Draws `source` to `surface`.
 
-    Wraps Pygame's blit, but requires `dest` to have length 2.
+    Wraps Pygame's blit, but requires `dest` to have length 2, and keyword arguments.
     This prevents unexpected results when `dest` is passed concatenated tuples in error.
     """
     if len(dest) != 2:  # noqa: PLR2004
