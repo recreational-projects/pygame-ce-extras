@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [
     { name = "recreational-projects", email = "205627218+recreational-projects@users.noreply.github.com" }
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "pygame-ce>=2.5.1",
 ]
