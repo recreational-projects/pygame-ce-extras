@@ -1,0 +1,35 @@
+[project]
+name = "pygame-extras"
+version = "0.0.1"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "recreational-projects", email = "205627218+recreational-projects@users.noreply.github.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "pygame-ce>=2.5.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.3,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.9",
+]
+
+[tool.ruff.lint]
+future-annotations = true
+select = ["ALL"]
+ignore = [
+    "COM812",  # missing-trailing-comma. Conflicts with ruff format
+    "D", # pydocstyle
+]
+extend-safe-fixes = [
+    "TC",  # flake8-type-checking
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
