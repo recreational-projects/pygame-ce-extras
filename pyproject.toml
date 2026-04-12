@@ -1,5 +1,5 @@
 [project]
-name = "pygame-extras"
+name = "pygame-ce-extras"
 version = "0.0.1"
 description = "pygame-ce additions/helpers"
 readme = "README.md"
@@ -10,7 +10,7 @@ requires-python = ">=3.11"
 dependencies = [
     "pygame-ce>=2.5.2",
 ]
-urls = { "source" = "https://github.com/recreational-projects/pygame-extras" }
+urls = { "source" = "https://github.com/recreational-projects/pygame-ce-extras" }
 
 [build-system]
 requires = ["uv_build>=0.11.3,<0.12.0"]

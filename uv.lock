@@ -43,7 +43,7 @@ wheels = [
 ]
 
 [[package]]
-name = "pygame-extras"
+name = "pygame-ce-extras"
 version = "0.0.1"
 source = { editable = "." }
 dependencies = [

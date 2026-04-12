@@ -1,1 +1,1 @@
-# pygame-extras
+# pygame-ce-extras
