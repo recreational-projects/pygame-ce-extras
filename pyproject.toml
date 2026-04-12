@@ -8,7 +8,7 @@ authors = [
 ]
 requires-python = ">=3.11"
 dependencies = [
-    "pygame-ce>=2.5.1",
+    "pygame-ce>=2.5.2",
 ]
 urls = { "source" = "https://github.com/recreational-projects/pygame-extras" }
 
