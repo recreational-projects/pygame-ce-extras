@@ -27,10 +27,30 @@ def blit(
     return surface.blit(source=source, dest=dest, area=area)
 
 
-def load_svg(filepath: Path, size: tuple[int, int]) -> pg.Surface:
-    """TODO: Docstring."""
-    glyph = pg.image.load_sized_svg(file=filepath, size=size)
-    glyph.fill(pg.Color("white"), special_flags=pg.BLEND_RGB_ADD)
-    surface = pg.Surface(size, pg.SRCALPHA)
-    blit(surface=surface, source=glyph)
+def icon_from_svg(
+    *,
+    filepath: Path,
+    size: int = 24,
+    foreground_color: pg.typing.ColorLike | None = None,
+    background_color: pg.typing.ColorLike | None = None,
+) -> pg.Surface:
+    """Create an icon image from an SVG file."""
+    glyph_size_ = 3 * size // 4
+    glyph = pg.image.load_sized_svg(file=filepath, size=(glyph_size_, glyph_size_))
+    if foreground_color:
+        glyph.fill(pg.Color("white"), special_flags=pg.BLEND_RGB_ADD)
+        glyph.fill(foreground_color, special_flags=pg.BLEND_RGB_MULT)
+
+    surface = pg.Surface(size=(size, size), flags=pg.SRCALPHA)
+    if background_color:
+        radius_ = size // 2
+        pg.draw.circle(
+            surface=surface,
+            color=background_color,
+            center=(radius_, radius_),
+            radius=radius_,
+            width=0,
+        )
+    glyph_dest_ = (size - glyph_size_) // 2
+    blit(surface=surface, source=glyph, dest=(glyph_dest_, glyph_dest_))
     return surface
