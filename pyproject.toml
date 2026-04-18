@@ -18,6 +18,7 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "pdoc>=16.0.0",
     "pytest>=9.0.3",
     "ruff>=0.15.11",
 ]
@@ -27,7 +28,7 @@ future-annotations = true
 select = ["ALL"]
 ignore = [
     "COM812",  # missing-trailing-comma. Conflicts with ruff format
-    "D", # pydocstyle
+    "D105", # undocumented-magic-method
 ]
 extend-safe-fixes = [
     "TC",  # flake8-type-checking
@@ -36,9 +37,7 @@ extend-safe-fixes = [
 [tool.ruff.lint.per-file-ignores]
 # Not relevant in tests:
 "tests/*" = [
+    "D",
     "PLR2004", # magic-value-comparison
     "S101", # assert
 ]
-
-[tool.ruff.lint.pydocstyle]
-convention = "numpy"

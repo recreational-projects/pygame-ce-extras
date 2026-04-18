@@ -1,3 +1,5 @@
+"""Module implementing helper functions."""
+
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
@@ -15,9 +17,10 @@ def blit(
     dest: pg.typing.Point = (0, 0),
     area: pg.typing.RectLike | None = None,
 ) -> pg.Rect:
-    """Draws `source` to `surface`.
+    """Draws `source` onto `surface`.
 
-    Wraps Pygame's blit, but requires `dest` to have length 2, and keyword arguments.
+    Wraps `pygame.Surface.blit`, but requires keyword arguments,
+    and optional `dest` to have length 2.
     This prevents unexpected results when `dest` is passed concatenated tuples in error.
     """
     if len(dest) != 2:  # noqa: PLR2004
@@ -34,7 +37,29 @@ def icon_from_svg(
     foreground_color: pg.typing.ColorLike | None = None,
     background_color: pg.typing.ColorLike | None = None,
 ) -> pg.Surface:
-    """Create an icon image from an SVG file."""
+    """Generate a square icon image from an SVG file, with optional circular background.
+
+    Args:
+    ----
+    filepath:
+        Path to the SVG file to load.
+
+    size:
+        Size of the overall image. The SVG image is scaled to 0.75 of this value.
+
+    foreground_color:
+        Color to apply to the SVG image.
+        If `None` (default), original colors are kept.
+
+    background_color:
+        Color to fill a background circle.
+        If `None` (default), no background is drawn.
+
+    Returns:
+    -------
+    `pg.Surface`
+
+    """
     glyph_size_ = 3 * size // 4
     glyph = pg.image.load_sized_svg(file=filepath, size=(glyph_size_, glyph_size_))
     if foreground_color:
