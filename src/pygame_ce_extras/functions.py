@@ -33,7 +33,7 @@ def blit(
 def icon_from_svg(
     *,
     filepath: Path,
-    size: int = 24,
+    size: int = 32,
     foreground_color: pg.typing.ColorLike | None = None,
     background_color: pg.typing.ColorLike | None = None,
 ) -> pg.Surface:
@@ -45,7 +45,8 @@ def icon_from_svg(
         Path to the SVG file to load.
 
     size:
-        Size of the overall image. The SVG image is scaled to 0.75 of this value.
+        Size of the overall image. The SVG image is scaled to 0.75 of this value
+        (24 px by default - nominal size for many icon libraries) and centered.
 
     foreground_color:
         Color to apply to the SVG image.
