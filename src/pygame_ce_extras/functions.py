@@ -33,7 +33,8 @@ def blit(
 def icon_from_svg(
     *,
     filepath: Path,
-    size: int = 32,
+    size: int = 24,
+    scale_factor: float = 1,
     foreground_color: pg.typing.ColorLike | None = None,
     background_color: pg.typing.ColorLike | None = None,
 ) -> pg.Surface:
@@ -45,8 +46,10 @@ def icon_from_svg(
         Path to the SVG file to load.
 
     size:
-        Size of the overall image. The SVG image is scaled to 0.75 of this value
-        (24 px by default - nominal size for many icon libraries) and centered.
+        Size of the overall image.
+
+    scale_factor:
+        The SVG image is scaled by this factor and centered.
 
     foreground_color:
         Color to apply to the SVG image.
@@ -61,22 +64,22 @@ def icon_from_svg(
     `pg.Surface`
 
     """
-    glyph_size_ = 3 * size // 4
+    glyph_size_ = size * scale_factor
     glyph = pg.image.load_sized_svg(file=filepath, size=(glyph_size_, glyph_size_))
     if foreground_color:
         glyph.fill(pg.Color("white"), special_flags=pg.BLEND_RGB_ADD)
         glyph.fill(foreground_color, special_flags=pg.BLEND_RGB_MULT)
 
-    surface = pg.Surface(size=(size, size), flags=pg.SRCALPHA)
     if background_color:
         radius_ = size // 2
-        pg.draw.circle(
+        pg.draw.aacircle(
             surface=surface,
             color=background_color,
             center=(radius_, radius_),
             radius=radius_,
             width=0,
         )
+    surface = pg.Surface(size=(size, size), flags=pg.SRCALPHA)
     glyph_dest_ = (size - glyph_size_) // 2
     blit(surface=surface, source=glyph, dest=(glyph_dest_, glyph_dest_))
     return surface
