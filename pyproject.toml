@@ -20,13 +20,14 @@ build-backend = "uv_build"
 dev = [
     "pdoc>=16.0.0",
     "pytest>=9.0.3",
-    "ruff>=0.15.11",
+    "ruff>=0.15.15",
 ]
 
 [tool.ruff.lint]
 future-annotations = true
 select = ["ALL"]
 ignore = [
+    "ANN002",  # missing-type-args
     "COM812",  # missing-trailing-comma. Conflicts with ruff format
     "D105", # undocumented-magic-method
 ]
@@ -41,3 +42,6 @@ extend-safe-fixes = [
     "PLR2004", # magic-value-comparison
     "S101", # assert
 ]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"

@@ -59,7 +59,7 @@ def icon_from_svg(
         Color to fill a background circle.
         If `None` (default), no background is drawn.
 
-    Returns:
+    Returns
     -------
     `pg.Surface`
 
@@ -70,16 +70,16 @@ def icon_from_svg(
         glyph.fill(pg.Color("white"), special_flags=pg.BLEND_RGB_ADD)
         glyph.fill(foreground_color, special_flags=pg.BLEND_RGB_MULT)
 
+    surface_ = pg.Surface(size=(size, size), flags=pg.SRCALPHA)
     if background_color:
         radius_ = size // 2
         pg.draw.aacircle(
-            surface=surface,
+            surface=surface_,
             color=background_color,
             center=(radius_, radius_),
             radius=radius_,
             width=0,
         )
-    surface = pg.Surface(size=(size, size), flags=pg.SRCALPHA)
     glyph_dest_ = (size - glyph_size_) // 2
-    blit(surface=surface, source=glyph, dest=(glyph_dest_, glyph_dest_))
-    return surface
+    blit(surface=surface_, source=glyph, dest=(glyph_dest_, glyph_dest_))
+    return surface_
