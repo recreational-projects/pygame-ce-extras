@@ -1,6 +1,8 @@
 """Module implementing the `FrozenColor` class."""
 
-from typing import Any, Self
+from __future__ import annotations
+
+from typing import Any
 
 import pygame as pg
 
@@ -19,6 +21,6 @@ class FrozenColor(pg.Color):
         err_msg = f"Cannot set attribute on a `{self.__class__.__name__}` instance"
         raise AttributeError(err_msg)
 
-    def with_alpha(self, alpha: int) -> Self:
+    def with_alpha(self, alpha: int) -> FrozenColor:
         """Return a new `FrozenColor` with `alpha` set to the given value."""
         return FrozenColor(self.r, self.g, self.b, alpha)
