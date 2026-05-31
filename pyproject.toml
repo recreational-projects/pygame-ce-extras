@@ -1,6 +1,6 @@
 [project]
 name = "pygame-ce-extras"
-version = "0.0.5"
+version = "0.0.6"
 description = "pygame-ce additions/helpers"
 readme = "README.md"
 authors = [
