@@ -46,3 +46,6 @@ extend-safe-fixes = [
 
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"
+
+[tool.uv]
+resolution = "lowest-direct"
