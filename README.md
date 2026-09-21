@@ -1,8 +1,17 @@
 # pygame-ce-extras
 
-## Add to a project
+## Installation
+
+From GitHub, specifying a version, e.g:
+
 ```shell
 uv add git+https://github.com/recreational-projects/pygame-ce-extras --tag v0.x.x
+```
+
+or with `pip`:
+
+```shell
+pip install git+https://github.com/recreational-projects/pygame-ce-extras@v0.x.x
 ```
 
 ## Development
